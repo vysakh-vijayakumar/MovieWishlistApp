@@ -1,18 +1,4 @@
 
-Tue May 19 11:48:52 IST 2020:StartApp -> main() starting...
-Tue May 19 11:49:03 IST 2020:StartApp -> main() ch1 = 6
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = vysakh
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = asmfcbs
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = gammusmovie
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = something
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = moondaylist
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = vysakhlove
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = the
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = Mywishlist
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = jamjam
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = sidharth
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = mummy
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = wishlist123
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = may9
-Tue May 19 11:49:03 IST 2020:WishListModel -> listMovies() wishlistName = plsrun
-Tue May 19 12:10:00 IST 2020:StrarApp -> main() exception happen null
+Thu May 28 12:19:19 IST 2020:StartApp -> main() starting...
+Thu May 28 12:19:39 IST 2020:StartApp -> main() ch1 = 7
+Thu May 28 12:20:14 IST 2020:StrarApp -> main() exception happen null

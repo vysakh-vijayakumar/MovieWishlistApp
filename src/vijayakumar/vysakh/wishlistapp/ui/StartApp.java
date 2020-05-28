@@ -4,14 +4,18 @@ package vijayakumar.vysakh.wishlistapp.ui;
 import java.io.File;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ScheduledExecutorService;
 
 import com.itextpdf.text.log.SysoLogger;
 
 import vijayakumar.vysakh.wishlistapp.data.Constants;
 import vijayakumar.vysakh.wishlistapp.services.WishListModel;
 import vijayakumar.vysakh.wishlistapp.util.CreateDirctry;
+import vijayakumar.vysakh.wishlistapp.util.EmailValidator;
 import vijayakumar.vysakh.wishlistapp.util.Logger;
+import vijayakumar.vysakh.wishlistapp.util.ScheduledMailExecutor;
 import vijayakumar.vysakh.wishlistapp.util.WishListUtil;
+import vijayakumar.vysakh.wishlistapp.util.WishlistMailerUtil;
 import vijayakumar.vysakh.wishlistapp.util.WishlistToPDF;
 import vijayakumar.vysakh.wishlistapp.util.WishlistsToExcel;
 
@@ -22,18 +26,20 @@ public class StartApp {
 		try {
 			System.out.println("jfgsdjfh");
 			int ch1 = 0;
-			String wishName,searchWord;
+			String wishName,searchWord,recepientEmail;
 			CreateDirctry.create();
 			Logger logger = Logger.getInstance();
 			logger.emptyLog();
 			logger.SetLogtoConsole(false);
-			
 			logger.log("StartApp -> main() starting...");	
+			
+			ScheduledMailExecutor.executeMail(); 										// Executing scheduled 	mail executor..
+			
 			Scanner s1 = new Scanner(System.in);
 			Scanner s2 = new Scanner(System.in);
 			WishListModel model = new WishListModel();
 			///	 MAIN MENU	
-			while(ch1 != 7) {	
+			while(ch1 != 8) {	
 				System.out.println("****** MAIN MENU ******");
 				System.out.println("# Press 1 : To Create MovieWishList");
 				System.out.println("# Press 2 : To Load MovieWishList");
@@ -41,7 +47,8 @@ public class StartApp {
 				System.out.println("# Press 4 : To List");
 				System.out.println("# Press 5 : To Generate Excel Sheet");
 				System.out.println("# Press 6 : To Generate PDF");
-				System.out.println("# Press 7 : To Exit");
+				System.out.println("# Press 7 : To Send Wishlist to Mail");
+				System.out.println("# Press 8 : To Exit");
 				// choice validation
 				do {
 					System.out.println("\nEnter your choice : ");
@@ -140,14 +147,30 @@ public class StartApp {
 						System.out.println("The Excel Sheet Generation failed..!");
 					break;
 //				PDF	
-				case 6:
+				case 6:																				// Main menu case -> 6
 					if(WishlistToPDF.generatePDF())
 						System.out.println("PDF file with wishlist data generated Successfully...?!");
 					else
 						System.out.println("The PDF file generation failed..!");
 					break;
+//				SEND MAIL	
+				case 7:																				// Main menu case -> 7
+					System.out.println("Enter email address :");
+					recepientEmail = s2.nextLine();
+					EmailValidator validate = new EmailValidator();					// email validation using regex
+					while(!validate.validateEmail(recepientEmail)) {
+						System.out.println("Invalid email address..!");
+						System.out.println("Enter a valid email :");
+						recepientEmail = s2.nextLine();
+					}
+					
+					if(WishlistMailerUtil.sendMail(recepientEmail))
+						System.out.println("Wishlist mailed to the recepient Successfully..!");
+					else
+						System.out.println("Wishlist mailing Failed..!");
+					break;
 //				GO BACK		
-				case 7:																				//	Main menu case -> 7
+				case 8:																				//	Main menu case -> 8
 					System.out.println("******GOOD BYE, COME BACK SOON******");
 					break;
 				default:
